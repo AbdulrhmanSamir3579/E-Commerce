@@ -1,0 +1,28 @@
+<div class="container">
+  <div class="row py-4">
+    <div class="col-md-4">
+      <owl-carousel-o [options]="customOptions">
+        <ng-container *ngFor="let img of productDetails.images">
+          <ng-template carouselSlide>
+            <img [src]="img" />
+          </ng-template>
+        </ng-container>
+      </owl-carousel-o>
+    </div>
+    <div
+      class="col-md-8 d-flex flex-column justify-content-center align-items-center"
+    >
+      <div class="container">
+        <h2 class="h4 fw-bolder mb-2">{{ productDetails?.title }}</h2>
+        <p class="text-muted p-3">{{ productDetails?.description }}</p>
+        <button
+          (click)="showSuccess('Successfuly added product to your cart.')"
+          (click)="addCartItem(productDetails?._id)"
+          class="btn bg-main text-white w-100 m-auto m-1 w-25"
+        >
+          Add To Cart
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

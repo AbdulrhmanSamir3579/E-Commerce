@@ -1,0 +1,157 @@
+<div class="container">
+  <h3 class="p-2 fw-bold headings text-center m-3">Register Now</h3>
+  <div *ngIf="errorMessage.length > 0" class="alert alert-danger">
+    {{ errorMessage }}
+  </div>
+  <div class="row-cols-1">
+    <div class="col">
+      <form
+        [formGroup]="registerForm"
+        (ngSubmit)="handleRegister(registerForm)"
+        class="fs-6 position-relative"
+      >
+        <label for="name">Username:</label>
+        <input
+          formControlName="name"
+          type="text"
+          class="form-control form-control-lg mb-2"
+          id="name"
+        />
+        <div
+          *ngIf="
+            registerForm.get('name')?.touched &&
+            registerForm.get('name')?.errors
+          "
+          class="alert alert-danger"
+        >
+          <p *ngIf="registerForm.get('name')?.getError('required')">
+            Username is required
+          </p>
+
+          <p *ngIf="registerForm.get('name')?.getError('minLength') == null">
+            At least 3 characters long.
+          </p>
+          <p *ngIf="registerForm.get('name')?.getError('maxLength') == null">
+            At most 50 characters long.
+          </p>
+        </div>
+
+        <label for="email">Email:</label>
+        <input
+          formControlName="email"
+          type="text"
+          class="form-control form-control-lg mb-2"
+          id="email"
+        />
+        <div
+          *ngIf="
+            registerForm.get('email')?.touched &&
+            registerForm.get('email')?.errors
+          "
+          class="alert alert-danger"
+        >
+          <p *ngIf="registerForm.get('email')?.getError('required')">
+            At least 7 characters long
+          </p>
+          <p *ngIf="registerForm.get('email')?.getError('pattern') != null">
+            emails must end with Ex: --@gmail.com (no special characters except
+            (@))
+          </p>
+        </div>
+
+        <label for="password">Password:</label>
+        <input
+          formControlName="password"
+          type="password"
+          class="form-control form-control-lg mb-2"
+          id="email"
+          id="password"
+        />
+        <div
+          *ngIf="
+            registerForm.get('password')?.touched &&
+            registerForm.get('password')?.errors
+          "
+          class="alert alert-danger"
+        >
+          <p *ngIf="registerForm.get('password')?.getError('required')">
+            At least 8 characters long (and less than 100 characters)
+          </p>
+          <p *ngIf="registerForm.get('password')?.getError('pattern')">
+            Contains at least 1 number
+          </p>
+          <p *ngIf="registerForm.get('password')?.getError('pattern')">
+            Contains at least 1 lowercase letter
+          </p>
+          <p *ngIf="registerForm.get('password')?.getError('pattern')">
+            Contains at least 1 uppercase letter
+          </p>
+          <p *ngIf="registerForm.get('password')?.getError('pattern')">
+            Contains a special character (e.g. @ !)
+          </p>
+        </div>
+
+        <label for="rePassword">Confirm Password:</label>
+        <input
+          formControlName="rePassword"
+          type="password"
+          class="form-control form-control-lg mb-2"
+          id="rePassword"
+        />
+        <div
+          *ngIf="
+            registerForm.get('rePassword')?.touched &&
+            registerForm.get('rePassword')?.errors
+          "
+          class="alert alert-danger"
+        >
+          <p *ngIf="registerForm.get('rePassword')?.getError('required')">
+            Repassword is required
+          </p>
+          <p *ngIf="registerForm.get('rePassword')?.getError('passwordMatch')">
+            Repasswords don't match
+          </p>
+        </div>
+
+        <label for="phone">Phone:</label>
+        <input
+          formControlName="phone"
+          type="tel"
+          class="form-control form-control-lg mb-2"
+          id="phone"
+        />
+        <div
+          *ngIf="
+            registerForm.get('phone')?.touched &&
+            registerForm.get('phone')?.errors
+          "
+          class="alert alert-danger"
+        >
+          <p *ngIf="registerForm.get('phone')?.getError('pattern')">
+            Phone number must start with (011 - 012 - 015)
+          </p>
+        </div>
+
+        <P class="font-md text-center"
+          >Already Have An Account ?
+          <span
+            ><a
+              routerLink="/login"
+              class="text-primary text-decoration-underpne fw-bold"
+              >Sign In</a
+            ></span
+          ></P
+        >
+
+        <button
+          [disabled]="registerForm.invalid"
+          type="submit"
+          class="btn btn-success w-25 fs-5 button ms-auto d-block text-center mb-5"
+        >
+          <i *ngIf="isLoading" class="fas fa-spinner fa-spin"></i>
+          <span *ngIf="!isLoading">Register</span>
+        </button>
+      </form>
+    </div>
+  </div>
+</div>

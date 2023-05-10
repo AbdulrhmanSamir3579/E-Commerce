@@ -1,0 +1,8 @@
+.gradient-custom {
+  /* fallback for old browsers */
+  background-image: linear-gradient(
+    to right,
+    rgb(126, 213, 111, 0.8),
+    rgb(40, 180, 133, 0.8)
+  );
+}
