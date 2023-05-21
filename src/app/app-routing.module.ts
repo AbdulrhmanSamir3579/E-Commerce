@@ -11,6 +11,7 @@ import { AuthGuard } from './auth.guard';
 import { ProductdetailsComponent } from './components/productdetails/productdetails.component';
 import { CheckoutComponent } from './components/checkout/checkout.component';
 
+
 const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
   { path: 'home',canActivate:[AuthGuard] ,component: HomeComponent },
