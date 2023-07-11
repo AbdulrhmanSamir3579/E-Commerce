@@ -17,11 +17,6 @@ export class CartComponent implements OnInit {
         private _ToastrService: ToastrService
     ) {
     }
-
-    showSuccess(message: string) {
-        this._ToastrService.success(message, 'Success');
-    }
-
     showInfo(message: string) {
         this._ToastrService.info(message, 'Success');
     }
