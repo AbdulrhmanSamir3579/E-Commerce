@@ -1,6 +1,6 @@
 import {ToastrService} from 'ngx-toastr';
 import {Product} from 'src/app/interfaces/product';
-import {ProductsService} from './../../services/products.service';
+import {ProductsService} from '../../services/products.service';
 import {Component, OnInit, Input, Output, EventEmitter} from '@angular/core';
 import {CartService} from 'src/app/services/cart.service';
 
