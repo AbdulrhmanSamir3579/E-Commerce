@@ -3,54 +3,54 @@
 <app-homeslider></app-homeslider>
 <app-categoryslider></app-categoryslider>
 <div class="container w-100">
-  <input
-    [(ngModel)]="searchTerm"
-    type="text"
-    class="form-control mt-5"
-    placeholder="Search ..."
-  />
+    <input
+            [(ngModel)]="searchTerm"
+            type="text"
+            class="form-control mt-5"
+            placeholder="Search ..."
+    />
 </div>
 
 <div
-  scrollTracker
-  (scrollingFinished)="onScrollingFinished()"
-  class="row p-3 cursor-pointer m-2 w-75 m-auto"
+        scrollTracker
+        (scrollingFinished)="onScrollingFinished()"
+        class="row p-3 cursor-pointer m-2 w-75 m-auto"
 >
-  <div
-    *ngFor="let product of products | productSearch : searchTerm"
-    class="col-md-3 p-4"
-  >
-    <div class="product px-2 py-4 overflow-hidden">
-      <a
-        [routerLink]="['/productdetails', product._id]"
-        class="text-decoration-none"
-      >
-        <img [src]="product.imageCover" alt="product.slug" />
-        <span class="text-main fw-bold font-sm">{{
-          product.category.name
-        }}</span>
-        <h2 class="h6 fw-bold">
-          {{ product.title.split(" ").slice(0, 2).join(" ") }}
-        </h2>
-        <div class="d-flex justify-content-between">
+    <div
+            *ngFor="let product of products | productSearch : searchTerm"
+            class="col-md-3 p-4"
+    >
+        <div class="product px-2 py-4 overflow-hidden">
+            <a
+                    [routerLink]="['/productdetails', product._id]"
+                    class="text-decoration-none"
+            >
+                <img [src]="product.imageCover" alt="product.slug"/>
+                <span class="text-main fw-bold font-sm">{{
+                    product.category.name
+                    }}</span>
+                <h2 class="h6 fw-bold">
+                    {{ product.title.split(" ").slice(0, 2).join(" ") }}
+                </h2>
+                <div class="d-flex justify-content-between">
           <span class="text-muted fw-bold font-sm"
-            >{{ product.price | currency }}
+          >{{ product.price | currency }}
           </span>
-          <div>
-            <i class="fas fa-star rating-color"></i>
-            <span class="text-muted fw-bold font-sm">{{
-              product.ratingsAverage
-            }}</span>
-          </div>
+                    <div>
+                        <i class="fas fa-star rating-color"></i>
+                        <span class="text-muted fw-bold font-sm">{{
+                            product.ratingsAverage
+                            }}</span>
+                    </div>
+                </div>
+            </a>
+            <button
+                    (click)="showSuccess('Successfuly added this product to your cart.')"
+                    (click)="addCartItem(product._id)"
+                    class="btn bg-main text-white w-100 m-auto mt-1"
+            >
+                Add To Cart
+            </button>
         </div>
-      </a>
-      <button
-        (click)="showSuccess('Successfuly added this product to your cart.')"
-        (click)="addCartItem(product._id)"
-        class="btn bg-main text-white w-100 m-auto mt-1"
-      >
-        Add To Cart
-      </button>
     </div>
-  </div>
 </div>

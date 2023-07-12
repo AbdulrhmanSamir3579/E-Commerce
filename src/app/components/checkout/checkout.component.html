@@ -1,42 +1,45 @@
 <section class="h-100">
-  <div class="container p-5 w-50">
-    <h2 class="mt-5">Delivery Address</h2>
-    <p class="lead fs-6 text-dark">
-      Thankfully provide us with some details fo shipping
-    </p>
+    <div class="container p-5 w-50">
+        <h2 class="mt-5">Delivery Address</h2>
+        <p class="lead fs-6 text-dark">
+            Thankfully provide us with some details fo shipping
+        </p>
 
-    <form
-      [formGroup]="shpippingAddress"
-      (ngSubmit)="handleSubmit(shpippingAddress)"
-      class="fw-bold text-dark mt-4"
-    >
-      <label for="details">Details</label>
-      <input
-        class="form-control mb-2"
-        type="text"
-        placeholder="Address Details.."
-        formControlName="details"
-      />
+        <form
+                [formGroup]="shpippingAddress"
+                (ngSubmit)="handleSubmit(shpippingAddress)"
+                class="fw-bold text-dark mt-4"
+        >
+            <label for="details">Details</label>
+            <input
+                    class="form-control mb-2"
+                    type="text"
+                    placeholder="Address Details.."
+                    formControlName="details"
+                    id="details"
+            />
 
-      <label for="phone">Phone</label>
-      <input
-        class="form-control mb-2"
-        type="tel"
-        placeholder="Phone ..."
-        formControlName="phone"
-      />
+            <label for="phone">Phone</label>
+            <input
+                    class="form-control mb-2"
+                    type="tel"
+                    placeholder="Phone ..."
+                    formControlName="phone"
+                    id="phone"
+            />
 
-      <label for="city">City</label>
-      <input
-        class="form-control mb-2"
-        type="text"
-        placeholder="Your City.."
-        formControlName="city"
-      />
+            <label for="city">City</label>
+            <input
+                    class="form-control mb-2"
+                    type="text"
+                    placeholder="Your City.."
+                    formControlName="city"
+                    id="city"
+            />
 
-      <button class="btn btn-success px-4 d-block" type="submit">
-        Cash Out
-      </button>
-    </form>
-  </div>
+            <button class="btn btn-success px-4 d-block" type="submit">
+                Cash Out
+            </button>
+        </form>
+    </div>
 </section>

@@ -1,6 +1,6 @@
 <div class="container">
     <h3 class="p-2 fw-bold headings text-center m-3">Login</h3>
-    <div *ngIf="errorMessage.length > 0"  class="alert alert-danger">{{errorMessage}}</div>
+    <div *ngIf="errorMessage.length > 0" class="alert alert-danger">{{errorMessage}}</div>
     <div class="row-cols-1">
         <div class="col">
             <form [formGroup]="loginForm" (ngSubmit)="handleLogin(loginForm)" class="fs-6 position-relative">
@@ -9,15 +9,15 @@
                 <label for="email">Email:</label>
                 <input formControlName="email" type="text" class="form-control form-control-lg mb-2" id="email">
                 <div *ngIf="loginForm.get('email')?.touched && loginForm.get('email')?.errors"
-                    class="alert alert-danger">
+                     class="alert alert-danger">
                     <p *ngIf="loginForm.get('email')?.getError('required')">Email is required</p>
                 </div>
 
                 <label for="password">Password:</label>
                 <input formControlName="password" type="password" class="form-control form-control-lg mb-2 " id="email"
-                    id="password">
+                       id="password">
                 <div *ngIf="loginForm.get('password')?.touched && loginForm.get('password')?.errors"
-                    class="alert alert-danger">
+                     class="alert alert-danger">
                     <p *ngIf="loginForm.get('password')?.getError('required')">
                         You must enter your password.
                     </p>
@@ -25,10 +25,11 @@
 
 
                 <P class="font-md text-center">Don't Have An Account ? <span><a routerLink="/register"
-                            class="text-primary text-decoration-underpne fw-bold ">Register Now</a></span></P>
+                                                                                class="text-primary text-decoration-underpne fw-bold ">Register Now</a></span>
+                </P>
 
                 <button [disabled]="loginForm.invalid" type="submit"
-                    class="btn btn-success w-25 fs-5 button ms-auto d-block text-center mb-5">
+                        class="btn btn-success w-25 fs-5 button ms-auto d-block text-center mb-5">
                     <i *ngIf="isLoading" class="fas fa-spinner fa-spin"></i>
                     <span *ngIf="!isLoading">Login</span>
                 </button>

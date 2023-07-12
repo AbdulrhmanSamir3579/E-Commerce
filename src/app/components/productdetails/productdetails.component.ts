@@ -1,66 +1,68 @@
-import { ToastrService } from 'ngx-toastr';
-import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
-import { ProductsService } from 'src/app/services/products.service';
-import { OwlOptions } from 'ngx-owl-carousel-o';
-import { CartService } from 'src/app/services/cart.service';
+import {ToastrService} from 'ngx-toastr';
+import {Component, OnInit} from '@angular/core';
+import {ActivatedRoute} from '@angular/router';
+import {ProductsService} from 'src/app/services/products.service';
+import {OwlOptions} from 'ngx-owl-carousel-o';
+import {CartService} from 'src/app/services/cart.service';
 
 @Component({
-  selector: 'app-productdetails',
-  templateUrl: './productdetails.component.html',
-  styleUrls: ['./productdetails.component.css'],
+    selector: 'app-productdetails',
+    templateUrl: './productdetails.component.html',
+    styleUrls: ['./productdetails.component.css'],
 })
 export class ProductdetailsComponent implements OnInit {
-  productDetails: any;
-  productId: any;
-  constructor(
-    private _ActivatedRoute: ActivatedRoute,
-    private _ProductsService: ProductsService,
-    private _CartService: CartService,
-    private _ToastrService: ToastrService
-  ) {}
+    productDetails: any;
+    productId: any;
 
-  showSuccess(message: string) {
-    this._ToastrService.success(message, 'Success');
-  }
+    constructor(
+        private _ActivatedRoute: ActivatedRoute,
+        private _ProductsService: ProductsService,
+        private _CartService: CartService,
+        private _ToastrService: ToastrService
+    ) {
+    }
 
-  addCartItem(productId: string) {
-    this._CartService.addToCart(productId).subscribe({
-      next: (res) => {
-        console.log(res);
-        this._CartService.numberOfCartItems.next(res.numOfCartItems);
-      },
-    });
-  }
+    showSuccess(message: string) {
+        this._ToastrService.success(message, 'Success');
+    }
 
-  ngOnInit(): void {
-    this._ActivatedRoute.paramMap.subscribe({
-      next: (params) => {
-        this.productId = params.get('id');
-      },
-    });
+    addCartItem(productId: string) {
+        this._CartService.addToCart(productId).subscribe({
+            next: (res) => {
+                console.log(res);
+                this._CartService.numberOfCartItems.next(res.numOfCartItems);
+            },
+        });
+    }
 
-    this._ProductsService.getProductsDetails(this.productId).subscribe({
-      next: (res) => {
-        this.productDetails = res.data;
-        console.log(this.productDetails);
-      },
-    });
-  }
+    ngOnInit(): void {
+        this._ActivatedRoute.paramMap.subscribe({
+            next: (params) => {
+                this.productId = params.get('id');
+            },
+        });
 
-  customOptions: OwlOptions = {
-    loop: true,
-    mouseDrag: true,
-    touchDrag: false,
-    pullDrag: false,
-    dots: false,
-    navSpeed: 700,
-    navText: ['', ''],
-    responsive: {
-      0: {
-        items: 1,
-      },
-    },
-    nav: true,
-  };
+        this._ProductsService.getProductsDetails(this.productId).subscribe({
+            next: (res) => {
+                this.productDetails = res.data;
+                console.log(this.productDetails);
+            },
+        });
+    }
+
+    customOptions: OwlOptions = {
+        loop: true,
+        mouseDrag: true,
+        touchDrag: false,
+        pullDrag: false,
+        dots: false,
+        navSpeed: 700,
+        navText: ['', ''],
+        responsive: {
+            0: {
+                items: 1,
+            },
+        },
+        nav: true,
+    };
 }

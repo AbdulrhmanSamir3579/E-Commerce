@@ -1,9 +1,9 @@
 .category:hover {
     border: solid 2px var(--main-color);
-    
+
 }
 
-.category{
+.category {
     box-sizing: border-box;
     border: solid 2px transparent;
 }
