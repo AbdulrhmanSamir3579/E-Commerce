@@ -1,12 +1,11 @@
 import {HttpClient} from '@angular/common/http';
-import {Injectable, OnInit} from '@angular/core';
+import {Injectable} from '@angular/core';
 import {BehaviorSubject, Observable} from 'rxjs';
-import {Header} from '../interfaces/header';
 
 @Injectable({
     providedIn: 'root',
 })
-export class CartService implements OnInit {
+export class CartService  {
     numberOfCartItems = new BehaviorSubject(0);
     baseUrl: string = 'https://ecommerce.routemisr.com/';
 
@@ -16,10 +15,7 @@ export class CartService implements OnInit {
             error: (err) => console.log(err),
         });
     }
-
-    ngOnInit(): void {
-    }
-
+    
     header: any = {
         token: localStorage.getItem('userToken'),
     };
